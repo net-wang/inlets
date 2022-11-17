@@ -5,13 +5,12 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
-	"log"
-	"strings"
-
 	"github.com/inlets/inlets/pkg/client"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
+	"io/ioutil"
+	"log"
+	"strings"
 )
 
 func init() {
@@ -141,9 +140,28 @@ func runClient(cmd *cobra.Command, _ []string) error {
 		StrictForwarding: strictForwarding,
 	}
 
-	if err := inletsClient.Connect(); err != nil {
-		return err
-	}
+	//index := 0
+	//for {
+	//	index++
+	//	if index%2 == 0 {
+	//		inletsClient.UpstreamMap[""] = "http://10.21.17.33:5888"
+	//		print("It's OK")
+	//	} else {
+	//		inletsClient.UpstreamMap[""] = "http://www.baidu.com"
+	//	}
+	//
+	//	go func() {
+	//		if err := inletsClient.Connect(); err != nil {
+	//
+	//		}
+	//	}()
+	//	time.Sleep(time.Second * 10)
+	//}
 
+	for {
+		if err := inletsClient.Connect(); err != nil {
+			return err
+		}
+	}
 	return nil
 }

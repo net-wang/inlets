@@ -93,3 +93,7 @@ func (c *Client) Connect() error {
 		remotedialer.ClientConnect(context.Background(), url+"/tunnel", headers, nil, filter, nil)
 	}
 }
+
+func (c *Client) DisConnect() {
+	remotedialer.ClientConnect(context.Background(), "ws://127.0.0.1:1234/tunnel", nil, nil, nil, nil)
+}
